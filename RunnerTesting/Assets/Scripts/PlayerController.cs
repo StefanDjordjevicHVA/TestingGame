@@ -1,14 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     public GameControllerScript gameController;
     public GameObject parent;
     public Rigidbody rb;
+    MeshRenderer mesh;
+
+    bool isHit = false;
+
+    public AudioSource pickUpSound;
+    public AudioSource crashSound;
+    BoxCollider boxColl;
 
     public float timer = 0f;
+    float hitTimer = 0f;
+    float blinkTimer = 0f;
     float limit = 1f;
     
     bool canMove = true;
@@ -22,6 +33,10 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        boxColl = GetComponent<BoxCollider>();
+        mesh = GetComponent<MeshRenderer>();
+
+        Scene scene = SceneManager.GetActiveScene();
 
         postions[0] = new Vector3(-2.5f, transform.position.y, transform.position.z);
         postions[1] = new Vector3(0f, transform.position.y, transform.position.z);
@@ -35,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
         MovePlayer();
 
-        //Jump();
+        HitTimer();
 
         transform.Rotate(new Vector3(10, transform.rotation.y, transform.rotation.z));
 
@@ -46,8 +61,6 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(transform.position.x, 0.4f, transform.position.z);
             canJump = true;
         }
-
-        Debug.Log(rb.velocity.y);
     }
 
     void MovePlayer()
@@ -84,7 +97,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!canMove)
         {
-            timer += Time.deltaTime * 2f;
+            timer += Time.deltaTime * 3f;
 
             var direction = prev - to;
 
@@ -118,13 +131,59 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void HitTimer()
+    {
+        if(isHit)
+        {
+            mesh.enabled = false;
+            Blinking();
+
+            hitTimer += Time.deltaTime;
+
+            if (hitTimer >= 1f)
+            {
+                hitTimer = 0;
+                boxColl.enabled = true;
+                mesh.enabled = true;
+                isHit = false;
+            }
+        }
+    }
+
+    void Blinking()
+    {
+        blinkTimer += Time.deltaTime;
+
+        if(blinkTimer >= 0.125)
+        {
+            mesh.enabled = true;
+            blinkTimer = 0f;
+        }
+
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "pickUp")
         {
+            pickUpSound.Play();
             score += 10;
             gameController.totalScore.text = score.ToString();
             other.gameObject.SetActive(false);
+        }
+
+        if(other.tag == "Obstacle")
+        {
+            crashSound.Play();
+            gameController.lives--;
+            other.gameObject.SetActive(false);
+            boxColl.enabled = false;
+            isHit = true;
+        }
+
+        if(other.gameObject.tag == "EndGame")
+        {
+            SceneManager.LoadScene("SampleScene");
         }
     }
 }
