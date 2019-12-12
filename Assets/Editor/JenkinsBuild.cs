@@ -5,7 +5,7 @@ using System.IO.Compression;
 using System.Linq;
 using UnityEditor;
 
-public class UnityBuild
+public class JenkinsBuild
 {
     /*
 	 * -- Game information --
