@@ -13,9 +13,6 @@ public class GameControllerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Scene scene = SceneManager.GetActiveScene();
-
-        
     }
 
     // Update is called once per frame

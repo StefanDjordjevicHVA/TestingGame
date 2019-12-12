@@ -9,19 +9,19 @@ public class PlayerController : MonoBehaviour
     public GameControllerScript gameController;
     public GameObject parent;
     public Rigidbody rb;
-    MeshRenderer mesh;
+    public MeshRenderer mesh;
 
     bool isHit = false;
 
     public AudioSource pickUpSound;
     public AudioSource crashSound;
-    BoxCollider boxColl;
+    public BoxCollider boxColl;
 
     public float timer = 0f;
     float hitTimer = 0f;
     float blinkTimer = 0f;
     float limit = 1f;
-    
+
     bool canMove = true;
     bool canJump = true;
     
@@ -33,10 +33,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        boxColl = GetComponent<BoxCollider>();
-        mesh = GetComponent<MeshRenderer>();
 
-        Scene scene = SceneManager.GetActiveScene();
+        
 
         postions[0] = new Vector3(-2.5f, transform.position.y, transform.position.z);
         postions[1] = new Vector3(0f, transform.position.y, transform.position.z);
@@ -183,6 +181,7 @@ public class PlayerController : MonoBehaviour
 
         if(other.gameObject.tag == "EndGame")
         {
+            Scene scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene("SampleScene");
         }
     }
