@@ -20,8 +20,14 @@ namespace Tests
 
             controller.MovePlayer(true, false, false);
 
-            //wait for 1 second so that it will use several frames.
             yield return new WaitForSeconds(1f);
+
+            controller.MovePlayer(false, false, false);
+
+            yield return new WaitForSeconds(1f);
+
+            controller.MovePlayer(true, false, false);
+
 
             Assert.AreEqual(0, controller.GetComponentInChildren<PlayerController>().currentPos);
             
@@ -37,8 +43,13 @@ namespace Tests
 
             controller.MovePlayer(false, true, false);
 
-            //wait for 1 second so that it will use several frames.
             yield return new WaitForSeconds(1f);
+
+            controller.MovePlayer(false, false, false);
+
+            yield return new WaitForSeconds(1f);
+
+            controller.MovePlayer(false, true, false);
 
             Assert.AreEqual(2, controller.GetComponentInChildren<PlayerController>().currentPos);
 
