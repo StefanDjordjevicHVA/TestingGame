@@ -111,9 +111,17 @@ MonoBehaviour:
   gameController: {fileID: 0}
   parent: {fileID: 1620315868916346484}
   rb: {fileID: 1620315868739291364}
+  mesh: {fileID: 1620315868739291363}
   pickUpSound: {fileID: 1671743610}
   crashSound: {fileID: 1671743609}
+  boxColl: {fileID: 1620315868739291360}
   timer: 0
+  postions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  currentPos: 1
+  prevPos: 0
 --- !u!54 &1620315868739291364
 Rigidbody:
   m_ObjectHideFlags: 0

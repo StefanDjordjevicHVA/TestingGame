@@ -641,10 +641,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: cdd9cf51-6b36-49b6-bdb7-6edb9459a366
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: TestingGame
+  organizationId: stefan-djordjevic-4150099
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
