@@ -42,6 +42,8 @@ namespace Tests
 
             Assert.AreEqual(2, controller.GetComponentInChildren<PlayerController>().currentPos);
 
+            //useless comment line to fake a usefull commit
+
         }
     }
 }
