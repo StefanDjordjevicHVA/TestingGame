@@ -97,7 +97,7 @@ public class JenkinsBuild
     private static readonly string DriveTempDirectory = "C:/Users/dhr. Djordjevic/Documents";
     private static readonly string DriveTempFolderName = "JenkinsTemp";
 
-    private static readonly string DriveDirectory = "C:/Users/dhr. Djordjevic/Google Drive";
+    private static readonly string DriveDirectory = "C:/Testing/dhr. Djordjevic/Google Drive";
     private static readonly string DriveFolderName = "Jenkins";
 
 
