@@ -94,7 +94,7 @@ public class JenkinsBuild
 	 * 
 	 * DriveTempDirectory and DriveDirectory should be changed for your own paths!
 	 */
-    private static readonly string DriveTempDirectory = "C:/Users/dhr. Djordjevic/Documents";
+    private static readonly string DriveTempDirectory = "C:/Testing/dhr. Djordjevic/Documents";
     private static readonly string DriveTempFolderName = "JenkinsTemp";
 
     private static readonly string DriveDirectory = "C:/Testing/dhr. Djordjevic/Google Drive";
