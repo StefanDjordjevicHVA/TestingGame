@@ -29,7 +29,7 @@ namespace Tests
             controller.MovePlayer(true, false, false);
 
 
-            Assert.AreEqual(7, controller.GetComponentInChildren<PlayerController>().currentPos);
+            Assert.AreEqual(0, controller.GetComponentInChildren<PlayerController>().currentPos);
             
         }
 
